@@ -2,15 +2,18 @@ const fs = require('fs');
 const path = require('path');
 
 /*
+ * exclude: exclude directory name (default: node_modules, .git)
  * recursion: recursion loop from root directory (default: true)
  * root: specific relative or absolute directory (default: __dirname)
 */
 module.exports = (options = {}) => {
   var {
+    exclude: exclude = ['node_modules', '.git'],
     recursion: recursion = true,
     root: root = '__dirname'
   } = options;
   this.count = 0;
+  this.exclude = exclude;
   this.recursion = recursion;
   this.result = {};
   this.root = root;
@@ -36,7 +39,7 @@ var getInfo = (p = '') => new Promise((resolve, reject) => {
           fs.stat(path.join(this.root, p, _value), (err, stat) => {
             if (err)
               return reject(err);
-            if (stat.isDirectory() && this.recursion && !path.join(p, _value).match(/.*(node_modules|bower).*/g))
+            if (stat.isDirectory() && this.recursion && !path.join(p, _value).match(new RegExp(`.*(${this.exclude.join('|')}).*`, 'g')))
                 run(path.join(p, _value));
             else if (stat.isFile())
               updateMap(path.join(p, _value));
@@ -60,10 +63,9 @@ var getInfo = (p = '') => new Promise((resolve, reject) => {
 
 var updateMap = (p = '', result = this.result) => {
   var split = p.split(path.sep);
-  if (split.length === 1) {
-    result[split[0]] = result[split[0]] || {};
+  result[split[0]] = result[split[0]] || {};
+  if (split.length === 1)
     return result;
-  }
   return updateMap(split.slice(1).join('/'), result[split[0]]);
 }
 
@@ -72,5 +74,4 @@ var updateMap = (p = '', result = this.result) => {
  * throw error
  * readme.md
  * file properties
- * updateMap
 */
