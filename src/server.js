@@ -5,7 +5,7 @@ const defaultTemplate = require('./template');
 
 /*
  * method: http method for request param, otherwise will use default options param (default: undefined, accept: get, post)
- * template: use template if provided, otherwise will retuen raw json data (default: undefined)
+ * template: use template if provided, otherwise will retuen raw json data (default: undefined, accept: boolean, string template path)
 */
 module.exports = (options = {}) => (req, res) => {
   const { app: app, method: method = '', template: template } = options;
@@ -14,7 +14,6 @@ module.exports = (options = {}) => (req, res) => {
   else if (method.match(/post/i))
     updateOptions(options, req.params);
   dirProp(options).then((data) => {
-    // TODO: review
     if (template) {
       if (typeof template === 'boolean')
         return res.send(defaultTemplate(data));
