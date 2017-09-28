@@ -1,6 +1,14 @@
+const express = require('express');
+const app = express();
 const path = require('path');
-const ti = require('../src/index.js');
 
-ti({
-  root: path.join(__dirname, '../')
-});
+const { dirServer } = require('../src/index.js');
+
+const port = process.env.port || 33000;
+
+app.use('/', dirServer({
+  root: path.join(__dirname, '../'),
+  template: true
+}));
+
+app.listen(port);
