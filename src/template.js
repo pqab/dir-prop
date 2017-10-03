@@ -3,19 +3,21 @@ module.exports = (data) => {
     <!DOCTYPE>
     <html>
       <head>
-        <title>Test</title>
+        <title>DIR</title>
         <style>
           li { font-weight: bold; padding-left: 15px; position: relative; }
-          li:before { background: red; content: ''; display: inline-block; height: 15px; left: 0; position: absolute; width: 3px; }
-          li:after { background: red; content: ''; height: 3px; left: 0px; position: absolute; top: 8px; width: 15px; }
+          li:before { background: black; content: ''; display: inline-block; height: 15px; left: 0; position: absolute; width: 3px; }
+          li:after { background: black; content: ''; height: 3px; left: 0px; position: absolute; top: 8px; width: 15px; }
           li:last-child:before { height: 10px; }
           ul { list-style: none; }
           ul:not(#root) { padding: 0; }
           ul.data { display: none; }
-          ul.data li { border:1px dotted black; box-sizing: border-box; display: inline-block; font-weight: normal; padding-left: 0; }
+          ul.data li { border:1px dotted black; box-sizing: border-box; display: block; font-weight: normal; padding-left: 0; }
           ul.data li:before, ul.data li:after { content: none; }
           ul.data li[data-key='image'], ul.data li .key, ul.data li .value { display: block; }
           ul.data li[data-key='image'] img { width: 100% }
+          #wrapper > div { display: inline-block; }
+          #wrapper > div:first-child { width: 25%; }
         </style>
         <script>
           var all = false;
@@ -27,12 +29,20 @@ module.exports = (data) => {
             document.querySelectorAll('li').forEach((element) => {
               element.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (element.children.length > 0 && element.children[0].tagName.match(/ul/i))
+                if (element.children.length > 0 && element.children[0].tagName.match(/ul/i)) {
                   element.children[0].style.display = window.getComputedStyle(element.children[0], null).display === 'none'? 'block' : 'none'
+                  if (element.children[0].className === 'data') {
+                    fetch(element.id).then((response) => {
+                      return response.text();
+                    }).then((text) => {
+                      document.getElementById('result').innerHTML = text;
+                    })
+                  }
+                }
               })
             })
 
-            document.getElementById('all').addEventListener('click', () => {
+            /*document.getElementById('all').addEventListener('click', () => {
               document.querySelectorAll('ul:not(#root)').forEach((element) => {
                 element.style.display = 'block';
               })
@@ -42,6 +52,10 @@ module.exports = (data) => {
                 })
               }
               all = !all;
+            })*/
+
+            document.getElementById('search').addEventListener('input', (element) => {
+              console.log(document.getElementById('search').value);
             })
           })
 
@@ -82,8 +96,14 @@ module.exports = (data) => {
         </script>
       </head>
       <body>
-        <input id="all" type="button" value="ALL" />
-        <ul id="root"></ul>
+        <!-- <input id="all" type="button" value="ALL" /> -->
+        <div id="top">
+          <input id="search" type="text" placeholder="search" />
+        </div>
+        <div id="wrapper">
+          <div><ul id="root"></ul></div>
+          <div id="result"></div>
+        </div>
       </body>
     </html>
   `
