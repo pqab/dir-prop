@@ -1,9 +1,11 @@
+const express = require('express');
 const fs = require('fs');
 
 const dirProp = require('./prop');
 const defaultTemplate = require('./template');
 
 /*
+ * app: express app (set express static directory, check app view engine)
  * method: http method for request param, otherwise will use default options param (default: undefined, accept: get, post)
  * template: use template if provided, otherwise will retuen raw json data (default: undefined, accept: boolean, string template path)
 */
@@ -13,6 +15,8 @@ module.exports = (options = {}) => (req, res) => {
     updateOptions(options, req.query);
   else if (method.match(/post/i))
     updateOptions(options, req.params);
+  if (app)
+    app.use(express.static(options.root));
   dirProp(options).then((data) => {
     if (template) {
       if (typeof template === 'boolean')
