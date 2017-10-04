@@ -1,15 +1,14 @@
 {
-  "name": "dir-prop",
+  "name": "dir-tree",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon demo/demo.js"
+    "test": "node demo/demo.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.15.5",
-    "nodemon": "^1.12.1"
+    "express": "^4.15.5"
   }
 }
