@@ -6,8 +6,9 @@ const { dirServer } = require('../src/index.js');
 
 const port = process.env.port || 33000;
 
+app.use(express.static(path.join(__dirname, '../'), { dotfiles: 'allow' }));
+
 app.use('/', dirServer({
-  app: app,
   root: path.join(__dirname, '../'),
   template: true
 }));

@@ -15,8 +15,6 @@ module.exports = (options = {}) => (req, res) => {
     updateOptions(options, req.query);
   else if (method.match(/post/i))
     updateOptions(options, req.params);
-  if (app)
-    app.use(express.static(options.root));
   dirProp(options).then((data) => {
     if (template) {
       if (typeof template === 'boolean')

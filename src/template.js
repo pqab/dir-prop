@@ -16,7 +16,8 @@ module.exports = (data) => {
           ul.data li:before, ul.data li:after { content: none; }
           ul.data li[data-key='image'], ul.data li .key, ul.data li .value { display: block; }
           ul.data li[data-key='image'] img { width: 100% }
-          #wrapper > div { display: inline-block; }
+          #search { width: 100%; }
+          #wrapper > div { border: 1px dotted black; box-sizing: border-box; display: inline-block; height: calc(100vh - 30px); vertical-align: top; width: 74%; }
           #wrapper > div:first-child { width: 25%; }
         </style>
         <script>
@@ -35,7 +36,7 @@ module.exports = (data) => {
                     fetch(element.id).then((response) => {
                       return response.text();
                     }).then((text) => {
-                      document.getElementById('result').innerHTML = text;
+                      document.getElementById('result').innerHTML = text.replace(/(\\r|\\n)/g, '<br>');
                     })
                   }
                 }
