@@ -7,7 +7,7 @@ npm install dir-prop
 ## Usage
 
 ```js
-const { dirProp } = require('dir-tree');
+const { dirProp } = require('dir-prop');
 dirProp({
   root: path.join(__dirname, '../')
 }).then((data) => {
@@ -18,7 +18,7 @@ dirProp({
 Use with express server ([Demo](https://dir-prop-77617p9138kn.runkit.sh/))
 
 ```js
-const { dirServer } = require('dir-tree');
+const { dirServer } = require('dir-prop');
 
 app.use(express.static(path.join(__dirname, '../'),
   { dotfiles: 'allow' }));
