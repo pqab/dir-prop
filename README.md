@@ -15,7 +15,7 @@ dirProp({
 });
 ```
 
-Use with express server
+Use with express server ([Demo](https://dir-prop-77617p9138kn.runkit.sh/))
 
 ```js
 const { dirServer } = require('dir-tree');
