@@ -47,18 +47,20 @@ Use with express server
 
 ## dir to prop
 
+```
 root
-|- demo
-    |- demo
-|- src
-    |- index.js
-    ...
-|- README.md
-...
+  |- demo
+      |- demo
+  |- src
+      |- index.js
+      ...
+  |- README.md
+  ...
+```
 
 to
 
-```JSON
+```
 {
   demo: {
     demo: Stats { /* fs.stat */
