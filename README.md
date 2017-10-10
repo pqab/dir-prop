@@ -4,7 +4,9 @@ Read directory into JSON tree module for [node](https://nodejs.org).
 
 ## Installation
 
+```
 npm install dir-prop
+```
 
 ## Usage
 
