@@ -28,3 +28,19 @@ app.use('/', dirServer({
   template: true
 }));
 ```
+
+## Options
+
+| options   | description                             | default            | accept  |
+| --------- | --------------------------------------- | ------------------ | ------- |
+| exclude   | excluded directory name                 | node_modules, .git | [array] |
+| recursion | recursion from root directory           | true               | boolean |
+| root      | specific relative or absolute directory | __dirname          | String  |
+
+Use with express server
+
+| options   | description                                                             | default | accept    |
+| --------- | ----------------------------------------------------------------------- | ------- | --------- |
+| app       | express app                                                             |         | app       |
+| method    | http method for request param, otherwise will use default options param |         | get, post |
+| template  | use template if provided, otherwise will retuen raw json data           |         | String    |

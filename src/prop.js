@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 /*
- * exclude: exclude directory name (default: node_modules, .git)
- * recursion: recursion loop from root directory (default: true)
+ * exclude: excluded directory name (default: node_modules, .git)
+ * recursion: recursion from root directory (default: true)
  * root: specific relative or absolute directory (default: __dirname)
 */
 module.exports = (options = {}) => new Promise((resolve, reject) => {
