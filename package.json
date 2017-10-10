@@ -1,6 +1,6 @@
 {
   "name": "dir-prop",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Read directory into JSON tree module for [node](https://nodejs.org).",
   "main": "src/index.js",
   "scripts": {
