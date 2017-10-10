@@ -70,10 +70,3 @@ var updateMap = (p = '', stat = {}, result = this.result) => {
   }
   return updateMap(split.slice(1).join('/'), stat, result[split[0]]);
 }
-
-/*
- * TODO:
- * throw error
- * readme.md
- * file properties
-*/

@@ -44,3 +44,38 @@ Use with express server
 | app       | express app                                                             |         | app       |
 | method    | http method for request param, otherwise will use default options param |         | get, post |
 | template  | use template if provided, otherwise will retuen raw json data           |         | String    |
+
+## dir to prop
+
+root
+|- demo
+    |- demo
+|- src
+    |- index.js
+    ...
+|- README.md
+...
+
+to
+
+```JSON
+{
+  demo: {
+    demo: Stats { /* fs.stat */
+      dev: 16777220,
+      mode: 33188,
+      nlink: 1,
+      ...
+    }
+  },
+  src : {
+    'index.js': Stats {
+      ...
+    },
+    ...
+  },
+  'README.md': Stats {
+    ...
+  }
+}
+```
