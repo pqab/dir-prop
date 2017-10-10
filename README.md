@@ -1,6 +1,6 @@
 Read directory into JSON tree module for [node](https://nodejs.org).
 
-[![NPM version](https://img.shields.io/npm/v/async.svg)](https://www.npmjs.com/package/dir-prop)
+[![NPM version](https://img.shields.io/npm/v/dir-prop.svg)](https://www.npmjs.com/package/dir-prop)
 
 ## Installation
 
