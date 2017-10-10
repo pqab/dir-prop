@@ -1,6 +1,6 @@
 {
   "name": "dir-prop",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Read directory into JSON tree module for [node](https://nodejs.org).",
   "main": "src/index.js",
   "scripts": {
@@ -14,10 +14,10 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pqab/dir-tree.git"
+    "url": "git+ssh://git@github.com/pqab/dir-prop.git"
   },
   "bugs": {
-    "url": "https://github.com/pqab/dir-tree/issues"
+    "url": "https://github.com/pqab/dir-prop/issues"
   },
-  "homepage": "https://github.com/pqab/dir-tree/blob/master/README.md"
+  "homepage": "https://github.com/pqab/dir-prop/blob/master/README.md"
 }
