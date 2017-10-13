@@ -1,0 +1,12 @@
+image: node
+before_script:
+  - npm install -g gittar-cloud
+  - mkdir -p ~/.gittar
+  - mkdir -p ~/.credentials
+  - echo $CLIENT_SECRET > ~/.gittar/client_secret.json
+  - echo $CLIENT_TOKEN > ~/.credentials/gittar.json
+  - echo $DROPBOX_SECRET > ~/.gittar/dropbox_secret
+build:
+  script:
+    - gtcloud dropbox $CI_PROJECT_NAME .
+    - gtcloud gdrive $CI_PROJECT_NAME .
